@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
+import ru.netology.repository.NotFoundException;
 import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -74,8 +75,14 @@ class ProductManagerTest {
 
     // HOMEWORK 13
     @Test
-    public void shouldDeleteByNoExistId() {
-        manager.delete(6);
+    public void shouldThrowNegativeIdException() {
+        try {
+            manager.delete(6);
+        } catch (NotFoundException e) {
+            System.out.println(e);
+        } catch (Exception e) {
+            fail();
+        }
     }
 
     @Test
