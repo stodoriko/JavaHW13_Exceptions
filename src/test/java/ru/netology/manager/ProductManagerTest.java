@@ -76,18 +76,15 @@ class ProductManagerTest {
     // HOMEWORK 13
     @Test
     public void shouldThrowNegativeIdException() {
-        try {
-            manager.delete(6);
-        } catch (NotFoundException e) {
-            System.out.println(e);
-        } catch (Exception e) {
-            fail();
-        }
+        // вызов метода, который должен сгенерировать исключение
+        assertThrows(NotFoundException.class, () -> {
+          manager.delete(6);
+        });
     }
+
 
     @Test
     public void shouldDeleteByExistId() {
         manager.delete(5);
     }
-
 }
